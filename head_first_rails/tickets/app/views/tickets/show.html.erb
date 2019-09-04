@@ -22,8 +22,15 @@
 
 <p>
   <strong>Email address:</strong>
-  <%= @ticket.email_address %>
+  <%=h @ticket.email_address %>
 </p>
+
+<p>
+  <strong>Phone:</strong>
+  <%=h @ticket.phone %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>
