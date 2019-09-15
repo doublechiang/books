@@ -4,7 +4,8 @@
 </head>
 <body>
   <% for ad in @ads %>
-    <li><a href="/ads/<%= ad.id %>"><%= ad.name %></a></li>
+    <li><a href="/ads/<%= ad.id %>"><%= ad.name %></a>
+    <%= link_to '[Delete]', {action: :destroy, id: ad.id}, method: :delete, data: {confirm: 'Are you sure?'} %></li>
   <% end %>
 </body>
 </html>
