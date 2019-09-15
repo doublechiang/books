@@ -1,0 +1,10 @@
+<html>
+<head>
+  <title>All Ads</title>
+</head>
+<body>
+  <% for ad in @ads %>
+    <li><a href="/ads/<%= ad.id %>"><%= ad.name %></a></li>
+  <% end %>
+</body>
+</html>
