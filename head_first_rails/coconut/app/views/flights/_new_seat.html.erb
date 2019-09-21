@@ -1,0 +1,35 @@
+<h1>New Seat</h1>
+
+<%= form_for(seat) do |f| %>
+
+  <% if seat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(seat.errors.count, "error") %> prohibited this ad from being saved:</h2>
+
+      <ul>
+      <% seat.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- rails 4 do not support f.error_messages
+  -->
+  <!--
+      Flight id can be removed since we added it the show page, it's duplicated
+  -->
+  <%= f.hidden_field :flight_id %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :baggage %><br />
+    <%= f.text_field :baggage %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
