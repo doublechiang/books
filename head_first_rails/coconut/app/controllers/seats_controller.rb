@@ -1,6 +1,12 @@
 class SeatsController < ApplicationController
   before_action :set_seat, only: [:show, :edit, :update, :destroy]
 
+
+  def flight_seats
+    @flight = Flight.find(params[:flight_id])
+    render :partial=> "flights/seat_list", :locals=>{:seats=>@flight.seats}
+  end
+
   # GET /seats
   # GET /seats.json
   def index
