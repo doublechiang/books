@@ -1,0 +1,59 @@
+body {
+    background: #f9e933;
+}
+
+main {
+    background: white;
+    overflow: auto;
+}
+
+header {
+    background: white;
+}
+
+header h1 {
+    float: left;
+    width: 570px;
+}
+
+header nav {
+    float: right;
+    width: 285px;
+}
+
+
+header, main, footer {
+    min-width: 855px;
+}
+
+
+header .container, main .container, footer .container {
+    max-width: 855px;
+    margin: auto;
+}
+
+main {
+    background: white;
+    overflow: auto;
+  }
+  
+  main .left {
+    float: left;
+    width: 570px;
+  }
+  
+  main .right {
+    float: right;
+    width: 285px;
+  }
+  
+  footer .left {
+    float: left;
+    width: 570px;
+  }
+  
+  footer .sitemap {
+    float: right;
+    width: 285px;
+  }
+
