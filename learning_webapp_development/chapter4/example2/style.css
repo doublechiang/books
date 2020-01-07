@@ -5,3 +5,7 @@
 .comments p:nth-child(odd) {
     background: gainsboro;
 }
+
+.comment_input button {
+    cursor: pointer;
+}
