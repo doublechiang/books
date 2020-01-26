@@ -33,18 +33,28 @@ var main = function (toDoObjects) {
                 });
             } else if ($element.parent().is(":nth-child(3)")) {
                 // tags page code
-                var organizedByTag = [
-                    {
-                        "name" : "shopping",
-                        "toDos" : ["Get groceries"]
-                    },
-                    {
-                        "name":"chores",
-                        "toDos":["Get Groceries", "Take Gracie to the park"]
-                    }
-                ];
-
-                organizedByTag.forEach(function(tag) {
+                var tags = []
+                toDoObjects.forEach(function(toDo) {
+                    toDo.tags.forEach(function(tag) {
+                        // make sure the tag is not already in the tag array
+                        if (tags.indexOf(tag) === -1) {
+                            tags.push(tag);
+                        }
+                    })
+                });
+            
+                var tagObjects = tags.map(function(tag) {
+                    // find all to-do objects that contain that tag
+                    var toDosWithTag = [];
+                    toDoObjects.forEach(function(toDo) {
+                        if(toDo.tags.indexOf(tag) !== -1 ){
+                            toDosWithTag.push(toDo.description);
+                        }
+                    });
+                    return {"name": tag, "toDos": toDosWithTag };
+                });
+            
+                tagObjects.forEach(function(tag) {
                     var $tagName=$("<h3>").text(tag.name);
                     $content=$("<ul>");
 
@@ -59,17 +69,31 @@ var main = function (toDoObjects) {
                 });
             } else if ($element.parent().is(":nth-child(4)")) {
                 // input a new to-do
-                $input = $("<input>"),
+                $input = $("<input>").addClass("description"),
+                $inputLabel = $("<p>").text("Description"),
+                $tagInput = $("<input>").addClass("tags"),
+                $tagLabel = $("<p>").text("Tags: "),
                 $button = $("<button>").text("+");
 
                 $button.on("click", function () {
                     if ($input.val() !== "") {
-                        toDos.push($input.val());
+                        var description = $input.val();
+                        tags = $tagInput.val().split(",");
+                        toDoObjects.push({"description": description, "tags": tags});
+                        toDos = toDoObjects.map(function(toDo) {
+                            return toDo.description;
+                        })
                         $input.val("");
-                    }
+                        $tagInput.val("");
+                    };
                 });
 
-                $content = $("<div>").append($input).append($button);
+                $content = $("<div>").append($inputLabel)
+                                    .append($input)
+                                    .append($tagLabel)
+                                    .append($tagInput)
+                                    .append($button);
+
                /* Alternatively append() allows multiple arguments so the above
                 can be done with $content = $("<div>").append($input, $button); */
             }
