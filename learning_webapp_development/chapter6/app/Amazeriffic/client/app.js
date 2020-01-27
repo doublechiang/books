@@ -79,12 +79,14 @@ var main = function (toDoObjects) {
                     if ($input.val() !== "") {
                         var description = $input.val();
                         tags = $tagInput.val().split(",");
+                        newToDo = {"description": description, "tags": tags}
                         toDoObjects.push({"description": description, "tags": tags});
                         // here we'll do a quick post to our todos route
-                        $.post("todos", {}, function (response) {
+                        $.post("todos", newToDo, function (result) {
                             // this callback is called when server response
-                            console.log("We posted and the server response");
-                            console.log(response);
+                            console.log(result);
+                            // wait for the server response then push the result
+                            toDoObjects.push(newToDo);
                         });
                         // update toDos
                         toDos = toDoObjects.map(function(toDo) {

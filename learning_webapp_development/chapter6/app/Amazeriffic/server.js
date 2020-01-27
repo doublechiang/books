@@ -25,6 +25,7 @@ var express = require("express"),
     ]
 
     app.use(express.static(__dirname + "/client"));
+    app.use(express.urlencoded());
     http.createServer(app).listen(3000);
 
 
@@ -33,8 +34,10 @@ app.get("/todos.json", function(req, res) {
 });
 
 app.post("/todos", function(req, res) {
-    console.log("data has been posted to the server");
 
+    var newToDo = req.body;
+    console.log(newToDo);
+    toDos.push(newToDo);
     // send back a simple object
     res.json({"message" : "You posted to the server!"});
 });
