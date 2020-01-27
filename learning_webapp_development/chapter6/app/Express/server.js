@@ -3,9 +3,13 @@ var express = require("express"),
     app;
 
 app = express();
+app.use(express.static(__dirname + "/client"));
 http.createServer(app).listen(3000);
 
-app.use(express.static(__dirname + "/client");
+app.get("/", function(req, res) {
+    res.send("Hello World!");
+});
+
 
 app.get("/hello", function(req, res) {
     res.send("Hello World!");
