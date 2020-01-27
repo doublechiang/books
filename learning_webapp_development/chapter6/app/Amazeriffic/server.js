@@ -32,3 +32,10 @@ app.get("/todos.json", function(req, res) {
     res.json(toDos);
 });
 
+app.post("/todos", function(req, res) {
+    console.log("data has been posted to the server");
+
+    // send back a simple object
+    res.json({"message" : "You posted to the server!"});
+});
+
