@@ -1,43 +1,15 @@
 var express = require("express"),
     http = require("http"),
     mongoose = require("mongoose"),
-    app=express(),
-    toDos = [
-        {
-            "description" : "Get groceries",
-            "tags" : [ "shopping", "chores" ]
-        },
-        {
-            "description" : "Make up some new ToDos",
-            "tags" : [ "writing", "work" ]
-        },
-        {
-            "description" : "Answer emails",
-            "tags" : [ "work" ]
-        },
-        {
-            "description" : "Take Gracie to the park",
-            "tags" : [ "chores", "pets" ]
-        },
-        {
-            "description" : "Finish writing this book",
-            "tags" : [ "writing", "work" ]
-        }
-    ]
+    // import ToDo model
+    ToDo = require("./models/todo.js"),
+    app=express();
 
     app.use(express.static(__dirname + "/client"));
     app.use(express.urlencoded());
 
     // connect to the data store in mongo
     mongoose.connect('mongodb://localhost/amazeriffic');
-
-    // mongoose model for todos
-    var ToDoSchema = mongoose.Schema({
-        description: String,
-        tags: [ String]
-    });
-
-    var ToDo = mongoose.model("ToDo", ToDoSchema);
 
     http.createServer(app).listen(3000);
 
