@@ -15,6 +15,7 @@ var express = require("express"),
 
     // route
     app.get("/todos.json", ToDosController.index);
+    app.get("/todos/:id", ToDosController.show);
     app.post("/todos", ToDosController.create);
 
     http.createServer(app).listen(3000);
