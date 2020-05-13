@@ -48,7 +48,7 @@ class AdsController < ApplicationController
 
   def check_logged_in
     authenticate_or_request_with_http_basic("Ads") do | username, password |
-      username == "admin" && password == "259706"
+      username == "admin" && password == "password"
     end
   end
 end
