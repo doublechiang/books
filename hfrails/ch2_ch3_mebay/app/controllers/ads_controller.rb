@@ -29,8 +29,11 @@ class AdsController < ApplicationController
 
   def update
     @ad = Ad.find(params[:id])
-    @ad.update_attributes(allowed_params)
-    redirect_to "/ads/#{@ad.id}"
+    if @ad.update_attributes(allowed_params)
+      redirect_to "/ads/#{@ad.id}"
+    else
+      render :template =>"/ads/edit"
+    end
 
   end
 
