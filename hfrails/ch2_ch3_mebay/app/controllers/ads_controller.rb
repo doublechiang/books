@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
-  before_filter :check_logged_in, :only => [:edit, :update, :delete]
+  before_action :check_logged_in, :only => [:edit, :update, :delete]
   def show
 #    p params
     @ad = Ad.find(params[:id])
