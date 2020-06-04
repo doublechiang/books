@@ -1,0 +1,3 @@
+# $("<%= escape_javascript(render :partial=>'flights/seat_list', :locals=>{:seats=>@seat.flight.seats}) %>").appendTo("#seats");
+$('#seats').html("<%= escape_javascript(render :partial=>'flights/seat_list', :locals=>{:seats=>@seat.flight.seats}) %>")
+alert('Test script executable')

@@ -1,0 +1,10 @@
+alert("Delete in action");
+console.log($(this));
+document.body.addEventListener('ajax:success', function(event) {
+    alert("ajax success in javascript");
+
+});
+$('.delete_class').bind('ajax:success', function(event) {
+    alert("ajax success");
+	$(this).closest('tr').fadeOut();
+}); 
