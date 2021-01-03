@@ -3,6 +3,6 @@
     "description": "The best to-do list",
     "version": "0.0.1",
     "dependencies": {
-        "mongoose":"3.6.x"
+        "mongoose":"5.8.x"
     }
 }
